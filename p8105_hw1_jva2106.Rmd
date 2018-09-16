@@ -58,4 +58,45 @@ prob2_df = tibble(
 ```
 
 
+```{r}
+
+mean(prob2_df$x)
+
+median(prob2_df$x)
+
+```
+
+```{r}
+
+library("dplyr")
+
+```
+
+```{r}
+
+library(ggplot2)
+
+ggplot(prob2_df, aes(x = x, y = y, color = log_vec)) + geom_point()
+
+ggsave("scatter1.pdf")
+
+```
+```{r}
+
+ggplot(prob2_df, aes(x = x, y = y, color = numeric_vec)) + geom_point()
+
+```
+
+```{r}
+
+ggplot(prob2_df, aes(x = x, y = y, color = fac_vec)) + geom_point()
+
+```
+
+
+```{r}
+
+ggsave("scatter.pdf")
+
+```
 
