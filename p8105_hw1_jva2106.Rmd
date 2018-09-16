@@ -5,3 +5,57 @@ date: 09-16-2018
 output: github_document
 ---
 
+```{r}
+library(tidyverse)
+
+set.seed(5)
+
+prob1_df = tibble(
+  random_sample = runif(10, min = 0, max = 5),
+  logic_vec = random_sample > 2,
+  char_vec = c("Bear", "Deer", "Bat", "Hamster", "Parrot", "Wolf", "Owl", "Penguin", "Ibis", "Squirrel"),
+  fact_vec = factor(c("Mammal", "Mammal", "Mammal", "Mammal", "Bird", "Mammal", "Bird", "Bird", "Bird", "Mammal"))
+)
+
+```
+
+```{r}
+mean(prob1_df$random_sample)
+mean(prob1_df$logic_vec)
+mean(prob1_df$char_vec)
+mean(prob1_df$fact_vec)
+```
+
+
+```{r}
+as.numeric(prob1_df$logic_vec)
+as.numeric(prob1_df$char_vec)
+as.numeric(prob1_df$fact_vec)
+```
+
+```{r}
+fact_convert = as.factor(prob1_df$char_vec)
+
+as.numeric(fact_convert)
+```
+```{r}
+char_convert = as.character(prob1_df$fact_vec)
+
+as.numeric(char_convert)
+```
+
+
+
+```{r}
+set.seed(4)
+prob2_df = tibble(
+  x = rnorm(1000),
+  y = rnorm(1000),
+  log_vec = x + y > 0,
+  numeric_vec = as.numeric(log_vec),
+  fac_vec = as.factor(log_vec)
+)
+```
+
+
+
