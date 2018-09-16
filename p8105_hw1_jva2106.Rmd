@@ -94,9 +94,3 @@ ggplot(prob2_df, aes(x = x, y = y, color = fac_vec)) + geom_point()
 ```
 
 
-```{r}
-
-ggsave("scatter.pdf")
-
-```
-
