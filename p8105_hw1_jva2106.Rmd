@@ -1,13 +1,17 @@
 ---
 title: "Homework 1"
 author: "Jyoti Ankam"
-date: 09-16-2018
+date: "09-16-2018"
 output: github_document
 ---
 
+## Problem 1
+
+The code chunk below creates a data frame for the following attributes, random_sample, logic_vec, char_vec and fact_vec. 
+
 ```{r}
 library(tidyverse)
-
+ 
 set.seed(5)
 
 prob1_df = tibble(
@@ -19,33 +23,67 @@ prob1_df = tibble(
 
 ```
 
+Obtaining means of random_sample, logic_vec, char_vec and fact_vec. 
+
 ```{r}
 mean(prob1_df$random_sample)
-mean(prob1_df$logic_vec)
-mean(prob1_df$char_vec)
-mean(prob1_df$fact_vec)
+
 ```
+
+The mean of variable random_sample is 2.64, which means it works.
+
+```{r}
+mean(prob1_df$logic_vec)
+
+```
+The mean of variable logic_vec is 0.6, which means it works.
+
+```{r}
+mean(prob1_df$char_vec)
+
+```
+The mean of variable char_vec is not obtainable, because the argument is not numeric or logical.
 
 
 ```{r}
+mean(prob1_df$fact_vec)
+```
+The mean of variable fact_vec is not obtainable, because the argument is not numeric or logical.
+
+Writing a code chunk that applies the as.numeric function to the logical, character, and factor variables:
+
+```{r, results="hide"}
 as.numeric(prob1_df$logic_vec)
 as.numeric(prob1_df$char_vec)
 as.numeric(prob1_df$fact_vec)
 ```
+ 
+We can see that as.numeric for character variable did not work and we received a warning message that it is NA (NAs introduced by coercion)
+
+In contrast, we could convert factor variable into numeric easily because they were assigned by R in a systematic order.
+
+
+In a second code chunk, we are converting our character variable from character to factor to numeric; similarly, convert your factor variable from factor to character to numeric:
 
 ```{r}
+
 fact_convert = as.factor(prob1_df$char_vec)
 
 as.numeric(fact_convert)
-```
-```{r}
+
 char_convert = as.character(prob1_df$fact_vec)
 
 as.numeric(char_convert)
+
 ```
+Here, we converted the character variable from character to factor to numeric and numbers were assigned to the factors; 
 
 
+Similarly, when we convert the factor variable from factor to character to numeric, we receive a warning message with NAs.
 
+
+## Problem 2:
+Creating a data frame comprising variables x, y, log_vec, numeric_vec and fac_vec.
 ```{r}
 set.seed(4)
 prob2_df = tibble(
@@ -57,20 +95,12 @@ prob2_df = tibble(
 )
 ```
 
+This is the inline R code:
 
-```{r}
 
-mean(prob2_df$x)
+The size of this dataset is `r nrow(prob2_df)` and the mean and median of variable X are `r mean(prob2_df$x)` and `r median(prob2_df$x)`. The proportion of cases for which the logical vector is TRUE is `r (sum(prob2_df$log_vec)/nrow(prob2_df))`
 
-median(prob2_df$x)
-
-```
-
-```{r}
-
-library("dplyr")
-
-```
+Making a scatterplot of y vs x and saving the first scatterplot:
 
 ```{r}
 
@@ -81,6 +111,9 @@ ggplot(prob2_df, aes(x = x, y = y, color = log_vec)) + geom_point()
 ggsave("scatter1.pdf")
 
 ```
+
+As we can see from the plots, ccatterplots for variables log_vec and fac_vec have only two option of TRUE (color coded Blue) and FALSE (color coded Pink) while variable numeric_vec has been color coded in terms of shades of blue depending the range of values from the minimum to the maximum. 
+
 ```{r}
 
 ggplot(prob2_df, aes(x = x, y = y, color = numeric_vec)) + geom_point()
